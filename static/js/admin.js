@@ -19,4 +19,14 @@ require(['jquery-nos'], function ($) {
         });
         e.preventDefault();
     });
+
+    //Delete a Q&A
+    $(document).on('click', '.faq_delete_question', function() {
+        var question = $(this).data('question');
+        var removed = $(this).data('removed');
+        if (confirm(question))
+        {
+            $(this).closest('.qa_item').html('<table><tr><th></th><td class="qa_message">' + removed + '</td></tr></table>');
+        }
+    });
 });

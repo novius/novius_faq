@@ -76,7 +76,7 @@ return array(
             'renderer' => 'Nos\Renderer_Wysiwyg',
             'template' => '{field}',
             'form' => array(
-                'style' => 'width: 100%; height: 150px;',
+                'style' => 'width: 100%; height: 100px;',
             ),
         ),
         'faq_virtual_name' => array(

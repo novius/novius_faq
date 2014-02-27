@@ -1,6 +1,10 @@
 <?php
 $uniqid = uniqid('questions_');
 ?>
+<script type="text/javascript">
+    //best way to load css file is to do this because it will be uploaded only once (even if several crud are open)
+    require(['link!static/apps/novius_faq/css/admin.css']);
+</script>
 <div id="<?= $uniqid ?>" class="count-questions-js" data-nb-questions="<?= empty($item->questions) ? 1 : count($item->questions) ?>">
     <div class="qa_list">
 <?php

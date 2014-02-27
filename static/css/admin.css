@@ -1,0 +1,21 @@
+.qa_list .faq_delete_question {
+    background: url("../img/cross-button.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 16px;
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 16px;
+}
+
+.qa_list .qa_item {
+    position: relative;
+}
+
+.qa_list .qa_message {
+    font-weight: bold;
+}
+
+.qa_list th {
+    font-weight: bold;
+}
