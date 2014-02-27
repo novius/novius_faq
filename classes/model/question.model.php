@@ -6,7 +6,7 @@ class Model_Question extends \Nos\Orm\Model
 {
 
     protected static $_primary_key = array('ques_id');
-    protected static $_table_name = 'questions';
+    protected static $_table_name = 'novius_faq_questions';
 
     protected static $_properties = array(
         'ques_id',
@@ -49,12 +49,12 @@ class Model_Question extends \Nos\Orm\Model
             'virtual_name_property' => 'ques_virtual_name',
         ),
         */
-        'Nos\Orm_Behaviour_Twinnable' => array(
+
+        'Nos\Orm_Behaviour_Contextable' => array(
             'context_property'      => 'ques_context',
-            'common_id_property' => 'ques_context_common_id',
-            'is_main_property' => 'ques_context_is_main',
-            'common_fields'   => array(),
+            'events' => array('before_insert')
         ),
+
         /*
         'Nos\Orm_Behaviour_Author' => array(
             'created_by_property' => 'ques_created_by_id',
@@ -64,23 +64,21 @@ class Model_Question extends \Nos\Orm\Model
     );
 
     protected static $_belongs_to  = array(
-        /*
-        'key' => array( // key must be defined, relation will be loaded via $question->key
-            'key_from' => 'ques_...', // Column on this model
-            'model_to' => 'FAQ\Model_...', // Model to be defined
-            'key_to' => '...', // column on the other model
+        'faq' => array( // key must be defined, relation will be loaded via $question->key
+            'key_from' => 'ques_faq_id', // Column on this model
+            'model_to' => 'Novius\Faq\Model_Faq', // Model to be defined
+            'key_to' => 'faq_id', // column on the other model
             'cascade_save' => false,
             'cascade_delete' => false,
             //'conditions' => array('where' => ...)
         ),
-        */
     );
     protected static $_has_one   = array();
     protected static $_has_many  = array(
         /*
         'key' => array( // key must be defined, relation will be loaded via $question->key
             'key_from' => 'ques_...', // Column on this model
-            'model_to' => 'FAQ\Model_...', // Model to be defined
+            'model_to' => 'Novius\Faq\Model_...', // Model to be defined
             'key_to' => '...', // column on the other model
             'cascade_save' => false,
             'cascade_delete' => false,
@@ -98,7 +96,7 @@ class Model_Question extends \Nos\Orm\Model
                 'key_to' => '...', // Column on the other model
                 'cascade_save' => false,
                 'cascade_delete' => false,
-                'model_to'       => 'FAQ\Model_...', // Model to be defined
+                'model_to'       => 'Novius\Faq\Model_...', // Model to be defined
             ),
         */
     );

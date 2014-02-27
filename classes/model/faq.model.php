@@ -6,7 +6,7 @@ class Model_Faq extends \Nos\Orm\Model
 {
 
     protected static $_primary_key = array('faq_id');
-    protected static $_table_name = 'faqs';
+    protected static $_table_name = 'novius_faqs';
 
     protected static $_properties = array(
         'faq_id',
@@ -58,38 +58,28 @@ class Model_Faq extends \Nos\Orm\Model
             'is_main_property' => 'faq_context_is_main',
             'common_fields'   => array(),
         ),
-        /*
-        'Nos\Orm_Behaviour_Author' => array(
-            'created_by_property' => 'faq_created_by_id',
-            'updated_by_property' => 'faq_updated_by_id',
-        ),
-        */
     );
 
     protected static $_belongs_to  = array(
-        /*
-        'key' => array( // key must be defined, relation will be loaded via $faq->key
-            'key_from' => 'faq_...', // Column on this model
-            'model_to' => 'FAQ\Model_...', // Model to be defined
-            'key_to' => '...', // column on the other model
+        'category' => array( // key must be defined, relation will be loaded via $faq->key
+            'key_from' => 'faq_cate_id', // Column on this model
+            'model_to' => 'Novius\Faq\Model_Category', // Model to be defined
+            'key_to' => 'cate_id', // column on the other model
             'cascade_save' => false,
             'cascade_delete' => false,
             //'conditions' => array('where' => ...)
         ),
-        */
     );
     protected static $_has_one   = array();
     protected static $_has_many  = array(
-        /*
-        'key' => array( // key must be defined, relation will be loaded via $faq->key
-            'key_from' => 'faq_...', // Column on this model
-            'model_to' => 'FAQ\Model_...', // Model to be defined
-            'key_to' => '...', // column on the other model
+        'questions' => array( // key must be defined, relation will be loaded via $faq->key
+            'key_from' => 'faq_id', // Column on this model
+            'model_to' => 'Novius\Faq\Model_Question', // Model to be defined
+            'key_to' => 'ques_faq_id', // column on the other model
             'cascade_save' => false,
             'cascade_delete' => false,
             //'conditions' => array('where' => ...)
         ),
-        */
     );
     protected static $_many_many = array(
         /*
@@ -101,7 +91,7 @@ class Model_Faq extends \Nos\Orm\Model
                 'key_to' => '...', // Column on the other model
                 'cascade_save' => false,
                 'cascade_delete' => false,
-                'model_to'       => 'FAQ\Model_...', // Model to be defined
+                'model_to'       => 'Novius\Faq\Model_...', // Model to be defined
             ),
         */
     );

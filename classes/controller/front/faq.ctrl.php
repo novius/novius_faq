@@ -76,7 +76,7 @@ class Controller_Front_Faq extends Controller_Front_Application
         if ($item) {
             // url built according to $item'class
             switch (get_class($item)) {
-                case 'FAQ\Model_Faq' :
+                case 'Novius\FaqModel_Faq' :
                     return $item->virtual_name().'.html';
                     break;
             }

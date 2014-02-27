@@ -6,7 +6,7 @@ class Model_Category extends \Nos\Orm\Model
 {
 
     protected static $_primary_key = array('cate_id');
-    protected static $_table_name = 'categories';
+    protected static $_table_name = 'novius_faq_categories';
 
     protected static $_properties = array(
         'cate_id',
@@ -67,7 +67,7 @@ class Model_Category extends \Nos\Orm\Model
         /*
         'key' => array( // key must be defined, relation will be loaded via $category->key
             'key_from' => 'cate_...', // Column on this model
-            'model_to' => 'FAQ\Model_...', // Model to be defined
+            'model_to' => 'Novius\Faq\Model_...', // Model to be defined
             'key_to' => '...', // column on the other model
             'cascade_save' => false,
             'cascade_delete' => false,
@@ -77,16 +77,14 @@ class Model_Category extends \Nos\Orm\Model
     );
     protected static $_has_one   = array();
     protected static $_has_many  = array(
-        /*
-        'key' => array( // key must be defined, relation will be loaded via $category->key
-            'key_from' => 'cate_...', // Column on this model
-            'model_to' => 'FAQ\Model_...', // Model to be defined
-            'key_to' => '...', // column on the other model
+        'faqs' => array( // key must be defined, relation will be loaded via $category->key
+            'key_from' => 'cate_id', // Column on this model
+            'model_to' => 'Novius\Faq\Model_Faq', // Model to be defined
+            'key_to' => 'faq_cate_id', // column on the other model
             'cascade_save' => false,
             'cascade_delete' => false,
             //'conditions' => array('where' => ...)
         ),
-        */
     );
     protected static $_many_many = array(
         /*
@@ -98,7 +96,7 @@ class Model_Category extends \Nos\Orm\Model
                 'key_to' => '...', // Column on the other model
                 'cascade_save' => false,
                 'cascade_delete' => false,
-                'model_to'       => 'FAQ\Model_...', // Model to be defined
+                'model_to'       => 'Novius\Faq\Model_...', // Model to be defined
             ),
         */
     );
