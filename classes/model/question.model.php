@@ -10,11 +10,10 @@ class Model_Question extends \Nos\Orm\Model
 
     protected static $_properties = array(
         'ques_id',
+        'ques_faq_id',
         'ques_question',
         'ques_answer',
         'ques_context',
-        'ques_context_common_id',
-        'ques_context_is_main',
         'ques_created_at',
         'ques_updated_at',
     );

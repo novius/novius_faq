@@ -10,6 +10,7 @@ class Model_Faq extends \Nos\Orm\Model
 
     protected static $_properties = array(
         'faq_id',
+        'faq_cate_id',
         'faq_title',
         'faq_virtual_name' => array(
             'default' => null,
@@ -61,24 +62,22 @@ class Model_Faq extends \Nos\Orm\Model
     );
 
     protected static $_belongs_to  = array(
-        'category' => array( // key must be defined, relation will be loaded via $faq->key
-            'key_from' => 'faq_cate_id', // Column on this model
-            'model_to' => 'Novius\Faq\Model_Category', // Model to be defined
-            'key_to' => 'cate_id', // column on the other model
+        'category' => array(
+            'key_from' => 'faq_cate_id',
+            'model_to' => 'Novius\Faq\Model_Category',
+            'key_to' => 'cate_id',
             'cascade_save' => false,
             'cascade_delete' => false,
-            //'conditions' => array('where' => ...)
         ),
     );
     protected static $_has_one   = array();
     protected static $_has_many  = array(
-        'questions' => array( // key must be defined, relation will be loaded via $faq->key
-            'key_from' => 'faq_id', // Column on this model
-            'model_to' => 'Novius\Faq\Model_Question', // Model to be defined
-            'key_to' => 'ques_faq_id', // column on the other model
-            'cascade_save' => false,
-            'cascade_delete' => false,
-            //'conditions' => array('where' => ...)
+        'questions' => array(
+            'key_from' => 'faq_id',
+            'model_to' => 'Novius\Faq\Model_Question',
+            'key_to' => 'ques_faq_id',
+            'cascade_save' => true,//questions are strongly related to faq
+            'cascade_delete' => true,//questions can not exist without a faq
         ),
     );
     protected static $_many_many = array(
