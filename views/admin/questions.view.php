@@ -36,6 +36,6 @@ if (!empty($item->questions)) {
 }
 ?>
     </div>
-    <button class="add-question-js"><?= __('Add one question') ?></button>
+    <button class="add-question-js button-add-qa"><?= __('Add one question') ?></button>
 </div>
 

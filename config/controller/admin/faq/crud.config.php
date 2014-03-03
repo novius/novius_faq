@@ -29,7 +29,7 @@ return array(
                 'view' => 'nos::form/expander',
                 'params' => array(
                     'title'   => __('Questions & Answers'),
-                    'nomargin' => false,
+                    'nomargin' => true,
                     'options' => array(
                         'allowExpand' => true,
                     ),

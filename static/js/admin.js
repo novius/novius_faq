@@ -26,7 +26,28 @@ require(['jquery-nos'], function ($) {
         var removed = $(this).data('removed');
         if (confirm(question))
         {
-            $(this).closest('.qa_item').html('<table><tr><th></th><td class="qa_message">' + removed + '</td></tr></table>');
+            if(removed.length > 0) {
+                $(this).closest('.qa_item').html('<table><tr><th></th><td class="qa_message">' + removed + '</td></tr></table>');
+            } else {
+                $(this).closest('.qa_item').remove();
+            }
+
+        }
+    });
+
+    //Move a Q&A
+    $(document).on('click', '.faq_icon_arrow', function() {
+        var down = $(this).hasClass('qa-down-js');
+        var $qa = $(this).closest('.qa_item');
+        var former_value = parseInt($qa.find('input[name$="[ques_order]"]').val());
+        var $swapper = down ? $qa.next() : $qa.prev();
+        $swapper.find('input[name$="[ques_order]"]').val(former_value);
+        if (down) {
+            $qa.find('input[name$="[ques_order]"]').val(former_value + 1);
+            $swapper.after($qa);
+        } else {
+            $qa.find('input[name$="[ques_order]"]').val(former_value - 1);
+            $swapper.before($qa);
         }
     });
 });
