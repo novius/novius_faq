@@ -10,7 +10,17 @@ $uniqid = uniqid('questions_');
 <?php
 $i = 1;
 if (!empty($item->questions)) {
-    foreach ($item->questions as $q) {
+    $app_config = \Config::load('novius_faq::config', true);
+    $questions = $item->questions;
+    if (!empty($app_config['ques_order'])) {
+        $order = $app_config['ques_order'];
+        if (is_array($order)) {
+            $questions = \Arr::sort($questions, $order[0], $order[1]);
+        } else {
+            $questions = \Arr::sort($questions, $order);
+        }
+    }
+    foreach ($questions as $q) {
         echo \View::forge('novius_faq::admin/question', array(
             'index' => $i,
             'item' => $q,

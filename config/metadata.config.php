@@ -24,12 +24,23 @@ return array(
             ),
         ),
     ),
-    // Enhancer configuration sample
+    // Enhancer configuration
     'enhancers' => array(
-        'faq_faq' => array( // key must be defined
+        'faq_url' => array( // key must be defined
             'title' => 'FAQ',
-            'desc'  => '',
+            'desc'  => 'Manage all FAQs and display a list by default',
             'urlEnhancer' => 'novius_faq/front/faq/main',
+        ),
+        'faq_one' => array( // key must be defined
+            'title' => 'One FAQ',
+            'desc'  => 'Display one selected FAQ',
+            'enhancer' => 'novius_faq/front/faq/faq',
+            'dialog' => array(
+                'contentUrl' => 'admin/novius_faq/faq/enhancer/popup',
+                'ajax' => true,
+                'width' => 200,
+                'height' => 200,
+            ),
         ),
     ),
 );

@@ -10,6 +10,37 @@ class Controller_Front_Faq extends Controller_Front_Application
 {
     public $page_from = false;
 
+    public function action_faq($args = array())
+    {
+        if (!empty($args['faq_id'])) {
+            $query = Model_Faq::query()
+            ->where('faq_id', $args['faq_id']);
+            //order questions?
+            if (!empty($this->app_config['ques_order'])) {
+                $order = $this->app_config['ques_order'];
+                $query->related('questions');
+                if (!is_array($order)) {
+                    $query->order_by('questions.'.$order);
+                } else {
+                    //if it's an array => array(prop, direction)
+                    $query->order_by('questions.'.$order[0], $order[1]);
+                }
+            } elseif (!empty($args['order_by']) && $args['order_by']) {
+                $query->related('questions')->order_by('questions.ques_question', 'ASC');
+            }
+            $faq = $query->get_one();
+            //FAQ should be published and have Q&As
+            if (!empty($faq) && $faq->published() && !empty($faq->questions)) {
+                if (!empty($this->app_config['use_css']) && $this->app_config['use_css']) {
+                    $this->main_controller->addCss('static/apps/novius_faq/css/front.css');
+                }
+                return \View::forge('front/faq_item', array(
+                    'faq' => $faq,
+                ), false);
+            }
+        }
+    }
+
     public function action_main($args = array())
     {
         $this->page_from = $this->main_controller->getPage();
@@ -52,11 +83,14 @@ class Controller_Front_Faq extends Controller_Front_Application
 
     protected function display_faq($virtual_name)
     {
-        $faq = Model_Faq::find('first', array(
+        //FAQ should be published and have Q&As
+        $faq = Model_Faq::query(array(
             'where' => array(
-                array('faq_virtual_name', '=', $virtual_name)
+                array('published', true),
+                array('faq_virtual_name', '=', $virtual_name),
+                array('faq_context', '=', $this->page_from->page_context)
             )
-        ));
+        ))->related('questions')->where('questions.ques_id', 'IS NOT', \DB::expr('NULL'))->get_one();
 
         if (empty($faq)) {
             throw new \Nos\NotFoundException();
@@ -76,7 +110,7 @@ class Controller_Front_Faq extends Controller_Front_Application
         if ($item) {
             // url built according to $item'class
             switch (get_class($item)) {
-                case 'Novius\FaqModel_Faq' :
+                case 'Novius\Faq\Model_Faq' :
                     return $item->virtual_name().'.html';
                     break;
             }
