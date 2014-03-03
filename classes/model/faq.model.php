@@ -78,6 +78,9 @@ class Model_Faq extends \Nos\Orm\Model
             'key_to' => 'ques_faq_id',
             'cascade_save' => true,//questions are strongly related to faq
             'cascade_delete' => true,//questions can not exist without a faq
+            'conditions' => array(
+                'order_by' => array('ques_order')
+            )
         ),
     );
     protected static $_many_many = array(

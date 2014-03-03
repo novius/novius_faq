@@ -58,6 +58,7 @@ class Controller_Admin_Faq_Crud extends \Nos\Controller_Admin_Crud
 
             $question->ques_question = $q['ques_question'];
             $question->ques_answer = $q['ques_answer'];
+            $question->ques_order = $q['ques_order'];
 
             //add in the relation
             //in case of a new question, $question->ques_id = null

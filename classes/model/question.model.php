@@ -13,6 +13,7 @@ class Model_Question extends \Nos\Orm\Model
         'ques_faq_id',
         'ques_question',
         'ques_answer',
+        'ques_order',
         'ques_context',
         'ques_created_at',
         'ques_updated_at',

@@ -13,22 +13,10 @@ class Controller_Front_Faq extends Controller_Front_Application
     public function action_faq($args = array())
     {
         if (!empty($args['faq_id'])) {
-            $query = Model_Faq::query()
-            ->where('faq_id', $args['faq_id']);
-            //order questions?
-            if (!empty($this->app_config['ques_order'])) {
-                $order = $this->app_config['ques_order'];
-                $query->related('questions');
-                if (!is_array($order)) {
-                    $query->order_by('questions.'.$order);
-                } else {
-                    //if it's an array => array(prop, direction)
-                    $query->order_by('questions.'.$order[0], $order[1]);
-                }
-            } elseif (!empty($args['order_by']) && $args['order_by']) {
-                $query->related('questions')->order_by('questions.ques_question', 'ASC');
-            }
-            $faq = $query->get_one();
+            $faq = Model_Faq::query()
+            ->where('faq_id', $args['faq_id'])
+            ->related('questions')
+            ->get_one();
             //FAQ should be published and have Q&As
             if (!empty($faq) && $faq->published() && !empty($faq->questions)) {
                 if (!empty($this->app_config['use_css']) && $this->app_config['use_css']) {
