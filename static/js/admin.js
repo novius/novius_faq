@@ -1,4 +1,4 @@
-require(['jquery-nos'], function ($) {
+require(['jquery-nos-wysiwyg'], function ($) {
 
     //Add one Q&A
     $(document).on('click', 'button.add-question-js', function(e) {
@@ -39,15 +39,21 @@ require(['jquery-nos'], function ($) {
     $(document).on('click', '.faq_icon_arrow', function() {
         var down = $(this).hasClass('qa-down-js');
         var $qa = $(this).closest('.qa_item');
+        var $textarea = $qa.find('textarea.tinymce');
+        var id_ans = $textarea.attr('id');
         var former_value = parseInt($qa.find('input[name$="[ques_order]"]').val());
         var $swapper = down ? $qa.next() : $qa.prev();
         $swapper.find('input[name$="[ques_order]"]').val(former_value);
         if (down) {
             $qa.find('input[name$="[ques_order]"]').val(former_value + 1);
+            tinyMCE.get(id_ans).remove();
             $swapper.after($qa);
+            $textarea.wysiwyg($textarea.data('wysiwyg-options'));
         } else {
             $qa.find('input[name$="[ques_order]"]').val(former_value - 1);
+            tinyMCE.get(id_ans).remove();
             $swapper.before($qa);
+            $textarea.wysiwyg($textarea.data('wysiwyg-options'));
         }
     });
 });
