@@ -23,7 +23,22 @@
                 <?= __('A') ?>
             </th>
             <td>
-                <textarea name="question[<?= $index ?>][ques_answer]"><?= !empty($item->ques_answer) ? $item->ques_answer : '' ?></textarea>
+                <?php
+                echo Nos\Renderer_Wysiwyg::renderer(array(
+                    'name' => 'question['.$index.'][ques_answer]',
+                    'value' => !empty($item->ques_answer) ? $item->ques_answer : '',
+                    'renderer_options' => array(
+                        'theme' => 'nos',
+                        'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,|,bullist,numlist,|,link',
+                        'theme_advanced_buttons2' => '',
+                        'theme_advanced_buttons3' => '',
+                        'theme_advanced_buttons4' => '',
+                        'theme_advanced_buttons5' => '',
+                        'theme_advanced_resizing' => true,
+                        'theme_advanced_resize_horizontal' => false,
+                    ),
+                ));
+                ?>
             </td>
         </tr>
     </table>

@@ -36,9 +36,6 @@ return array(
                     'content' => array(
                         'view' => 'novius_faq::admin/questions',
                         'params' => array(
-                            'fields' => array(
-                                'wysiwygs->introduction->wysiwyg_text'
-                            ),
                         ),
                     ),
                 ),
@@ -74,6 +71,13 @@ return array(
         'wysiwygs->introduction->wysiwyg_text' => array(
             'label' => __('Introduction'),
             'renderer' => 'Nos\Renderer_Wysiwyg',
+            /*'renderer_options' => array(
+                'theme_nos_buttons1' => 'styleselect,|,bold,italic,underline,strikethrough,|,justifycontrols,|,link',
+                'theme_nos_buttons2' => '',
+                'theme_nos_buttons3' => '',
+                'theme_nos_buttons4' => '',
+                'theme_nos_buttons5' => '',
+            ),*/
             'template' => '{field}',
             'form' => array(
                 'style' => 'width: 100%; height: 100px;',
