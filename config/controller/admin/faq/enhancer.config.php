@@ -11,14 +11,4 @@ $config = array(
         ),
     ),
 );
-$front_config = \Config::load('novius_faq::config', true);
-if (empty($front_config['ques_order'])) {
-    $config['fields']['order_by'] = array(
-        'label' => __('Order questions alphabetically ?'),
-        'form' => array(
-            'type' => 'checkbox',
-            'value' => 1,
-        ),
-    );
-}
 return $config;

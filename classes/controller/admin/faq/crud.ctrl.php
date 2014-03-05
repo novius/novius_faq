@@ -3,6 +3,12 @@ namespace Novius\Faq;
 
 class Controller_Admin_Faq_Crud extends \Nos\Controller_Admin_Crud
 {
+    public function prepare_i18n()
+    {
+        parent::prepare_i18n();
+        \Nos\I18n::current_dictionary('novius_faq::default');
+    }
+
     protected function fieldset($fieldset)
     {
         $fieldset = parent::fieldset($fieldset);

@@ -1,5 +1,6 @@
 <?php
 $uniqid = uniqid('questions_');
+\Nos\I18n::current_dictionary('novius_faq::default');
 ?>
 <script type="text/javascript">
     //best way to load css file is to do this because it will be uploaded only once (even if several crud are open)

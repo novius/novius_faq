@@ -1,6 +1,5 @@
 <?php
-    // Load dictionnary if we want to use __()
-    // Nos\I18n::current_dictionary('faq::common');
+\Nos\I18n::current_dictionary('novius_faq::default');
 ?>
 <div class="novius_faq noviusos_enhancer">
     <h2><?=$faq->faq_title ?></h2>

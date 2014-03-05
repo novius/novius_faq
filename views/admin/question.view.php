@@ -1,3 +1,6 @@
+<?php
+\Nos\I18n::current_dictionary('novius_faq::default');
+?>
 <div class="qa_item" data-qa-index="<?= $index ?>">
     <input type="hidden" name="question[<?= $index ?>][ques_id]" value="<?= !empty($item->ques_id) ? $item->ques_id : 0 ?>" />
     <input type="hidden" name="question[<?= $index ?>][ques_order]" value="<?= !empty($item->ques_order) ? $item->ques_order : $index ?>" />
