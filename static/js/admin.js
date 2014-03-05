@@ -44,16 +44,15 @@ require(['jquery-nos-wysiwyg'], function ($) {
         var former_value = parseInt($qa.find('input[name$="[ques_order]"]').val());
         var $swapper = down ? $qa.next() : $qa.prev();
         $swapper.find('input[name$="[ques_order]"]').val(former_value);
+        tinyMCE.get(id_ans).save();
+        tinyMCE.get(id_ans).remove();
         if (down) {
             $qa.find('input[name$="[ques_order]"]').val(former_value + 1);
-            tinyMCE.get(id_ans).remove();
             $swapper.after($qa);
-            $textarea.wysiwyg($textarea.data('wysiwyg-options'));
         } else {
             $qa.find('input[name$="[ques_order]"]').val(former_value - 1);
-            tinyMCE.get(id_ans).remove();
             $swapper.before($qa);
-            $textarea.wysiwyg($textarea.data('wysiwyg-options'));
         }
+        $textarea.wysiwyg($textarea.data('wysiwyg-options'));
     });
 });
