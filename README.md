@@ -17,3 +17,7 @@ You can leave the "Introduction" field empty, the corresponding html will not be
 
 All you need to know when editing the main config file of the FAQ application :
 * key "use_css" set to true by default : include a small css file to render your FAQ correctly
+
+## License
+
+Licensed under [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl-3.0.html) or (at your option) any later version.
