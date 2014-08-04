@@ -29,6 +29,7 @@
                 <?php
                 echo Nos\Renderer_Wysiwyg::renderer(array(
                     'name' => 'question['.$index.'][ques_answer]',
+                    'class' => 'tinymce',
                     'value' => !empty($item->ques_answer) ? $item->ques_answer : '',
                     'renderer_options' => array(
                         'theme' => 'nos',
