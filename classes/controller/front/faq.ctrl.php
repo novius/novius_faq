@@ -22,7 +22,7 @@ class Controller_Front_Faq extends Controller_Front_Application
                 if (!empty($this->app_config['use_css']) && $this->app_config['use_css']) {
                     $this->main_controller->addCss('static/apps/novius_faq/css/front.css');
                 }
-                return \View::forge('front/faq_item', array(
+                return \View::forge('novius_faq::front/faq_item', array(
                     'faq' => $faq,
                 ), false);
             }
@@ -63,7 +63,7 @@ class Controller_Front_Faq extends Controller_Front_Application
 
         $faq_list =  Model_Faq::find('all', $params);
 
-        return \View::forge('front/faq_list', array(
+        return \View::forge('novius_faq::front/faq_list', array(
             'faq_list' => $faq_list,
         ), false);
     }
@@ -87,7 +87,7 @@ class Controller_Front_Faq extends Controller_Front_Application
         $this->main_controller->setTitle($faq->faq_title);
         //$this->main_controller->setMetaDescription($faq->faq_title);
 
-        return \View::forge('front/faq_item', array(
+        return \View::forge('novius_faq::front/faq_item', array(
             'faq' => $faq,
         ), false);
     }
