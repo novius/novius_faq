@@ -48,7 +48,7 @@ class Model_Faq extends \Nos\Orm\Model
             'publication_end_property' => 'faq_publication_end',
         ),
         'Nos\Orm_Behaviour_Urlenhancer' => array(
-            'enhancers' => array('faq_faq'),
+            'enhancers' => array('faq_url'),
         ),
         'Nos\Orm_Behaviour_Virtualname' => array(
             'virtual_name_property' => 'faq_virtual_name',
