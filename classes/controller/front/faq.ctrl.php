@@ -55,7 +55,6 @@ class Controller_Front_Faq extends Controller_Front_Application
             'order_by' => array(
                 'faq_id' => 'ASC'
             ),
-            'limit' => 10
         );
 
         $params['where'][] = array('faq_context', '=', $this->page_from->page_context);
