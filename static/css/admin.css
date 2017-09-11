@@ -40,6 +40,33 @@
     font-weight: bold;
 }
 
+.qa_list th,
+.qa_list td {
+    padding: 1em;
+}
+
+.qa_list th {
+    font-weight: bold;
+    width: 5% !important;
+    padding-top: 17px;
+}
+
+.qa_list td {
+    padding-right: 65px;
+    text-align: center;
+}
+
+/*toolbar wysiwyg*/
+.qa_list .mceExternalToolbar th,
+.qa_list .mceExternalToolbar td  {
+    padding: 0;
+}
+
+.qa_list input,
+.qa_list textarea {
+    width: 100%;
+}
+
 .qa_item:nth-child(even) {
     background: #CCC
 }
