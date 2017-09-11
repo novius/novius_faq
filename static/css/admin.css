@@ -56,6 +56,17 @@
     text-align: center;
 }
 
+/*toolbar wysiwyg*/
+.qa_list .mceExternalToolbar th,
+.qa_list .mceExternalToolbar td  {
+    padding: 0;
+}
+
+.qa_list input,
+.qa_list textarea {
+    width: 100%;
+}
+
 .qa_item:nth-child(even) {
     background: #CCC
 }
