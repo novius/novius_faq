@@ -45,17 +45,6 @@
     padding: 1em;
 }
 
-.qa_list th {
-    font-weight: bold;
-    width: 5% !important;
-    padding-top: 17px;
-}
-
-.qa_list td {
-    padding-right: 65px;
-    text-align: center;
-}
-
 .qa_item:nth-child(even) {
     background: #CCC
 }

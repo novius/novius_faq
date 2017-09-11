@@ -33,7 +33,7 @@
                     'value' => !empty($item->ques_answer) ? $item->ques_answer : '',
                     'renderer_options' => array(
                         'theme' => 'nos',
-                        'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,|,bullist,numlist,|,noslink',
+                        'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,|,bullist,numlist,|,noslink,|,removeformat',
                         'theme_advanced_buttons2' => '',
                         'theme_advanced_buttons3' => '',
                         'theme_advanced_buttons4' => '',
