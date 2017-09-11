@@ -40,11 +40,6 @@
     font-weight: bold;
 }
 
-.qa_list th,
-.qa_list td {
-    padding: 1em;
-}
-
 .qa_item:nth-child(even) {
     background: #CCC
 }
